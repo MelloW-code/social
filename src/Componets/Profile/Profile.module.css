@@ -1,0 +1,11 @@
+.content {
+    grid-area: content;
+}
+.img {
+    width:100%;
+    height: 100px;
+}
+.local_header {
+    background-color: black;
+    height: 200px;
+}

@@ -1,0 +1,17 @@
+.text_wrapper {
+    text-align: center;
+    padding-top:20px;
+
+}
+textarea {
+    border-radius: 5px;
+}
+.wrapper_mypost {
+    background-color: white;
+    height: 600px;
+}
+.wrapper_wrapper {
+    background-color: #e8e8e8;
+    height: 600px;
+    padding: 20px;
+}

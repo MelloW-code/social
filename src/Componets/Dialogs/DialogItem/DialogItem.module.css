@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+.item {
+    width: 40%;
+    text-align: center;
+    margin-top: 10px;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
