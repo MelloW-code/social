@@ -1,8 +1,10 @@
 
-import {postType} from "./state";
+import {postType, profilePageType} from "./state";
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+
 
 let initialState = {
     posts: [
@@ -14,7 +16,9 @@ let initialState = {
 
 }
 
-export const profileReducer = (state: any = initialState, action: any) => {
+export type InitialStateType = typeof initialState
+
+export const profileReducer = (state:InitialStateType = initialState, action: any) => {
     if (action.type === ADD_POST) {
         let newPost: postType = {
             id: 4,

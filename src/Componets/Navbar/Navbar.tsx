@@ -8,11 +8,12 @@ type PropsType = {
     sidebar: sidebarFriendsType
     dispatch:(action:  ActionsTypes) => void
 }
-debugger
-function Navbar(props: PropsType) {
 
-    /*let friendsElements = props.sidebar.friends
-        .map(friend => <Friends id={friend.id}  name={friend.name} url={friend.url}/> )*/
+function Navbar(props: PropsType) {
+debugger
+
+    let friendsElements = props.sidebar.friends
+        .map(friend => <Friends id={friend.id}  name={friend.name} url={friend.url}/> )
     return (
         <nav className={style.nav}>
 
@@ -34,7 +35,7 @@ function Navbar(props: PropsType) {
 
             <div>
                 <h3>Friends</h3>
-               {/* {friendsElements}*/}
+                {friendsElements}
             </div>
 
         </nav>
