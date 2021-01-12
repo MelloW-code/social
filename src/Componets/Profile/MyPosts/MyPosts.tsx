@@ -11,8 +11,10 @@ import {
 
 type PropsType = {
     profilePage: profilePageType
+    addPost: () => void
+    updateNewPostText: (text:string) => void
     dispatch: (action: ActionsTypes) => void
-    newPostText: string
+    // newPostText: string
 }
 
 
@@ -25,10 +27,10 @@ function MyPosts(props: PropsType) {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    let addPost = () => {
+    let onAddPost = () => {
         if (newPostElement.current) {
-            //props.addPost()
-            props.dispatch(addPostAC(props.newPostText))
+            props.addPost()
+            props.dispatch(addPostAC(props.profilePage.newPostText))
         }
     }
     let onPostChange = () => {
@@ -45,10 +47,10 @@ function MyPosts(props: PropsType) {
                 <div className={style.text_wrapper}>
                     <div className={style.textarea}>
                         <textarea onChange={onPostChange} placeholder="Remember, be nice!" cols={125} rows={4}
-                                  ref={newPostElement} value={props.newPostText}/>
+                                  ref={newPostElement} value={props.profilePage.newPostText}/>
                     </div>
                     <div className={style.add_post}>
-                        <button onClick={addPost}>add post</button>
+                        <button onClick={onAddPost}>add post</button>
                     </div>
                 </div>
                 <div className={style.posts}>

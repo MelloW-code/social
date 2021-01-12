@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./redux/redux-store";
-import {rootStateType} from './redux/state'
-/*tj*/
+
 let rerender = (state: any) => {
     ReactDOM.render(
         <App

@@ -7,13 +7,15 @@ import {
     dialogPageType,
     sendMessageAC,
     updateNewMessageBodyAC,
-    updateNewPostTextAC
-} from '../../redux/state'
 
+} from '../../redux/state'
 
 type PropsType = {
     dialogsPage: dialogPageType
     dispatch: (action: ActionsTypes) => void
+    sendMessageChange: () => void
+    onMessageChange: () => void
+    //state: RootStateRedux
 
 }
 
@@ -50,7 +52,8 @@ function Dialogs(props: PropsType) {
                 {messagesElements}
             </div>
             <div>
-                <textarea onChange={onMessageChange} ref={urlMessageElement} value={props.dialogsPage.newMessageBody}/>
+                <textarea onChange={onMessageChange} ref={urlMessageElement}
+                          value={props.dialogsPage.newMessageBody}/>
             </div>
             <div>
                 <button onClick={sendMessage}>Send</button>

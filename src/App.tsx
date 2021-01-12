@@ -8,15 +8,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import News from "./Componets/News/News";
 import Music from "./Componets/Music/Music";
 import Settings from "./Componets/Settings/Settings";
-import {
-    ActionsTypes,
-    /*dialogPageType,
-    profilePageType,*/
-    rootStateType,
-   /* sidebarFriendsType,
-    StoreType*/
-} from "./redux/state";
+import {ActionsTypes} from "./redux/state";
 import {RootStateRedux} from "./redux/redux-store";
+import DialogsContainer from "./Componets/Dialogs/DialogsContainer";
 
 type PropsType = {
     state: RootStateRedux
@@ -38,13 +32,12 @@ debugger
 
                 <div className='app_wrapper_content'>
                     <Route  path='/dialogs' render = {
-                        () => <Dialogs dialogsPage={props.state.dialogsPage}
+                        () => <DialogsContainer state={props.state}
                                        dispatch={props.dispatch}
                         />}/>
 
                     <Route  path='/profile' render = {
-                        () => <Profile profilePage={props.state.profilePage}
-                                       dispatch={props.dispatch}
+                        () => <Profile state={props.state}  dispatch={props.dispatch}
                         />}/>
                     <Route  path='/news' component={News}/>
                     <Route  path='/music' component={Music}/>
