@@ -144,32 +144,6 @@ let store: StoreType = {
 
     }
 }
-export let addPostAC = (newPostText: string): AddPostActionType => {
-    return {
-        type: ADD_POST,
-        newPostText: newPostText
-    }
-}
-export let updateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-}
 
 
-
-
- export let updateNewMessageBodyAC = (body: string):UpdateNewMessageBodyTextActionType => {
-     return {
-         type: UPDATE_NEW_MESSAGE_BODY,
-         newMessage: body
-     }
- }
-export let sendMessageAC = (newMessage: string): SendMessageActionType => {
-     return {
-        type: SEND_MESSAGE,
-        message: newMessage
-    }
- }
 export default store

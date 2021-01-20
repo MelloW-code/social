@@ -11,7 +11,7 @@ function DialogItem(props: dialogType) {
         <div className={style.dialog + ' ' + style.active}>
             <div className={style.wrapper}>
                 <div className={style.item}>
-                    <img src={props.url} className={style.img}></img>
+                    {/*<img src={props.url} className={style.img}></img>*/}
 
                 <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
             </div>

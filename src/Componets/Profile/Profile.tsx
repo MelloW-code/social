@@ -7,8 +7,8 @@ import {RootStateRedux} from "../../redux/redux-store";
 
 
 type PropsType = {
-    state: RootStateRedux
-    dispatch: (action: ActionsTypes) => void
+    /*state: RootStateRedux
+    dispatch: (action: ActionsTypes) => void*/
     /*newPostText: string*/
 }
 
@@ -19,7 +19,7 @@ function Profile(props: PropsType) {
             <div className={style.local_header}>
             </div>
             <div>ava+desc</div>
-            <MyPostsContainer state={props.state}  dispatch={props.dispatch}/>
+            <MyPostsContainer  />
         </div>
     )
 }

@@ -1,7 +1,8 @@
-import {messagesTypes} from "./state";
+import {messagesTypes, SendMessageActionType, UpdateNewMessageBodyTextActionType} from "./state";
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE'
+
 
 let initialState = {
     dialogs: [
@@ -32,19 +33,38 @@ export type InitialStateType = typeof initialState
 
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: any): any => {
-
-    if (action.type === SEND_MESSAGE) {
-        let newMessage: messagesTypes = {
-            id: 4,
-            message: state.newMessageBody,
-            likes: 0
+    switch (action.type) {
+        case SEND_MESSAGE: {
+            let newMessage: messagesTypes = {
+                id: 4,
+                message: state.newMessageBody,
+                likes: 0
+            }
+            let stateCopy = {...state}
+            stateCopy.messages.push(newMessage)
+            stateCopy.newMessageBody = ''
+            return stateCopy
         }
-        state.messages.push(newMessage)
-        state.newMessageBody = ''
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-        state.newMessageBody = action.newMessage
+        case UPDATE_NEW_MESSAGE_BODY: {
+            let stateCopy = {...state, newMessageBody: action.newMessage}
+            //state.newMessageBody=action.newText
+            return stateCopy
+        }
+        default:
+            return state
     }
-    return state
 
 }
 
+export let updateNewMessageBodyAC = (body: string): UpdateNewMessageBodyTextActionType => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        newMessage: body
+    }
+}
+export let sendMessageAC = (newMessage: string): SendMessageActionType => {
+    return {
+        type: SEND_MESSAGE,
+        message: newMessage
+    }
+}

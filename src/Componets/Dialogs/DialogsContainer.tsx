@@ -1,49 +1,38 @@
-import React from "react";
-
-import {
-    ActionsTypes,
-    dialogPageType,
-    sendMessageAC,
-    updateNewMessageBodyAC,
-    updateNewPostTextAC
-} from '../../redux/state'
+import {dialogPageType} from '../../redux/state'
 import Dialogs from "./Dialogs";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
 import {RootStateRedux} from "../../redux/redux-store";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 
 
-type PropsType = {
-    //dialogsPage: dialogPageType
-    dispatch: (action: ActionsTypes) => void
-    state: RootStateRedux
+type MSTPType = {
+    dialogsPage: dialogPageType
 }
 
-function DialogsContainer(props: PropsType) {
-
-    let urlMessageElement = React.createRef<HTMLTextAreaElement>()
-
-    let sendMessage = () => {
-        if (urlMessageElement.current) {
-            props.dispatch(sendMessageAC(props.state.dialogsPage.newMessageBody))
-        }
-    }
-
-    let onMessageChange = () => {
-        if (urlMessageElement.current) {
-            let text = urlMessageElement.current.value
-            props.dispatch(updateNewMessageBodyAC(text))
-
-        }
-    }
-
-
-    return (
-        <Dialogs dispatch={props.dispatch}
-                 dialogsPage={props.state.dialogsPage}
-                 sendMessageChange={sendMessage}
-                 onMessageChange={onMessageChange}
-        />
-    )
+type MDTPType = {
+    sendMessage: (text: string) => void
+    onMessageChange: (text: string) => void
 }
 
+export type DialogsType = MSTPType & MDTPType
+
+let mapStateToProps = (state: RootStateRedux): MSTPType => {
+    return {
+        dialogsPage: state.dialogsPage,
+    }
+}
+let mapDispatchToProps = (dispatch: Dispatch):MDTPType => {
+    return {
+        sendMessage: (newMessage: string) => {
+            dispatch(sendMessageAC(newMessage))
+        },
+        onMessageChange: (text:string) => {
+            dispatch(updateNewMessageBodyAC(text))
+        },
+
+    }
+}
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 export default DialogsContainer

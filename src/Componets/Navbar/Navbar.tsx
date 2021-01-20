@@ -5,15 +5,13 @@ import Friends from "./Friends/Friends";
 import {ActionsTypes, sidebarFriendsType} from "../../redux/state";
 
 type PropsType = {
-    sidebar: sidebarFriendsType
-    dispatch:(action:  ActionsTypes) => void
+    /*sidebar: sidebarFriendsType
+    dispatch:(action:  ActionsTypes) => void*/
 }
 
 function Navbar(props: PropsType) {
-debugger
-
-    let friendsElements = props.sidebar.friends
-        .map(friend => <Friends id={friend.id}  name={friend.name} url={friend.url}/> )
+    /*let friendsElements = props.sidebar.friends
+        .map(friend => <Friends id={friend.id}  name={friend.name} url={friend.url}/> )*/
     return (
         <nav className={style.nav}>
 
@@ -35,7 +33,7 @@ debugger
 
             <div>
                 <h3>Friends</h3>
-                {friendsElements}
+                {/*{friendsElements}*/}
             </div>
 
         </nav>

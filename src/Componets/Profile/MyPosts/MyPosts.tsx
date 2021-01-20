@@ -1,13 +1,12 @@
-import React from 'react'
+import React, {KeyboardEvent} from 'react'
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {
-    ActionsTypes, addPostAC,
-    AddPostActionType,
+    ActionsTypes,
     profilePageType,
-    updateNewPostTextAC,
-    UpdateNewPostTextActionType
+
 } from "../../../redux/state";
+import {ProfileType} from "./MyPostsContainer";
 
 type PropsType = {
     profilePage: profilePageType
@@ -19,7 +18,7 @@ type PropsType = {
 
 
 
-function MyPosts(props: PropsType) {
+function MyPosts(props: ProfileType) {
 
     let postElements = props.profilePage.posts
         .map(post => <Post message={post.message} likes={post.likes} id={post.id}/>)
@@ -27,16 +26,23 @@ function MyPosts(props: PropsType) {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.charCode === 13) {
+            onAddPost();
+        }
+    }
+
+
     let onAddPost = () => {
         if (newPostElement.current) {
-            props.addPost()
-            props.dispatch(addPostAC(props.profilePage.newPostText))
+            //props.addPost()
+            props.addPost(props.profilePage.newPostText)
         }
     }
     let onPostChange = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            props.dispatch(updateNewPostTextAC(text))
+            props.onPostChange(text)
 
         }
     }
@@ -46,11 +52,11 @@ function MyPosts(props: PropsType) {
             <div className={style.wrapper_mypost}>
                 <div className={style.text_wrapper}>
                     <div className={style.textarea}>
-                        <textarea onChange={onPostChange} placeholder="Remember, be nice!" cols={125} rows={4}
+                        <textarea onKeyPress={onKeyPressHandler} onChange={onPostChange} placeholder="Remember, be nice!" cols={125} rows={4}
                                   ref={newPostElement} value={props.profilePage.newPostText}/>
                     </div>
                     <div className={style.add_post}>
-                        <button onClick={onAddPost}>add post</button>
+                        <button  onClick={onAddPost}>add post</button>
                     </div>
                 </div>
                 <div className={style.posts}>
