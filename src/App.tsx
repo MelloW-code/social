@@ -8,6 +8,7 @@ import News from "./Componets/News/News";
 import Music from "./Componets/Music/Music";
 import Settings from "./Componets/Settings/Settings";
 import DialogsContainer from "./Componets/Dialogs/DialogsContainer";
+import UsersContainer from "./Componets/Users/UsersContainer";
 
 type PropsType = {
     /*state: RootStateRedux
@@ -18,8 +19,7 @@ type PropsType = {
     sidebar: sidebarFriendsType*/
 }
 
-{/*sidebar={props.state.sidebar}
-                        dispatch={props.dispatch}*/}
+
 function App(props: PropsType) {
 
     return (
@@ -30,13 +30,12 @@ function App(props: PropsType) {
 
                 <div className='app_wrapper_content'>
                     <Route  path='/dialogs' render = {
-                        () => <DialogsContainer //state={props.state}
-                                       //dispatch={props.dispatch}
-                        />}/>
-
+                        () => <DialogsContainer />}/>
                     <Route  path='/profile' render = {
-                        () => <Profile /*state={props.state}  dispatch={props.dispatch}*/
-                        />}/>
+                        () => <Profile />}/>
+                    <Route  path='/users' render = {
+                        () => <UsersContainer />}/>
+
                     <Route  path='/news' component={News}/>
                     <Route  path='/music' component={Music}/>
                     <Route  path='/settings' component={Settings}/>

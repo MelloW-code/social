@@ -11,11 +11,10 @@ import {ProfileType} from "./MyPostsContainer";
 type PropsType = {
     profilePage: profilePageType
     addPost: () => void
-    updateNewPostText: (text:string) => void
+    updateNewPostText: (text: string) => void
     dispatch: (action: ActionsTypes) => void
     // newPostText: string
 }
-
 
 
 function MyPosts(props: ProfileType) {
@@ -52,11 +51,12 @@ function MyPosts(props: ProfileType) {
             <div className={style.wrapper_mypost}>
                 <div className={style.text_wrapper}>
                     <div className={style.textarea}>
-                        <textarea onKeyPress={onKeyPressHandler} onChange={onPostChange} placeholder="Remember, be nice!" cols={125} rows={4}
+                        <textarea onKeyPress={onKeyPressHandler} onChange={onPostChange}
+                                  placeholder="Remember, be nice!" cols={125} rows={4}
                                   ref={newPostElement} value={props.profilePage.newPostText}/>
                     </div>
                     <div className={style.add_post}>
-                        <button  onClick={onAddPost}>add post</button>
+                        <button onClick={onAddPost}>add post</button>
                     </div>
                 </div>
                 <div className={style.posts}>
