@@ -1,6 +1,3 @@
-import {messagesTypes} from "./state";
-import {friendType} from "./state";
-
 
 let initialState = {
         friends: [

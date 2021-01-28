@@ -1,20 +1,16 @@
 import React, {KeyboardEvent} from 'react'
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {
-    ActionsTypes,
-    profilePageType,
 
-} from "../../../redux/state";
 import {ProfileType} from "./MyPostsContainer";
 
-type PropsType = {
-    profilePage: profilePageType
-    addPost: () => void
-    updateNewPostText: (text: string) => void
-    dispatch: (action: ActionsTypes) => void
-    // newPostText: string
-}
+// type PropsType = {
+//     profilePage: profilePageType
+//     addPost: () => void
+//     updateNewPostText: (text: string) => void
+//     dispatch: (action: ActionsTypes) => void
+//     // newPostText: string
+// }
 
 
 function MyPosts(props: ProfileType) {
